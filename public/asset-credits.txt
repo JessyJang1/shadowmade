@@ -1,0 +1,20 @@
+SHADOWMADE — third-party plaza and skyline art
+
+Quaternius — Pine Tree with Snow, Pine Trees, Pine (CC0 1.0).
+Repainted for the winter skyline.
+https://poly.pizza/m/17vQv2X5rh
+https://poly.pizza/m/w8ZaiYjK8C
+https://poly.pizza/m/Zt62gceKXZ
+
+Rob Tuytel / Poly Haven — Roof Slates 02 (CC0 1.0).
+Resampled and color-graded for the roof material.
+https://polyhaven.com/a/roof_slates_02
+
+3DEP and SRTM elevation data courtesy of the U.S. Geological Survey, via Mapzen Terrain Tiles.
+The Teton height samples were reprojected, vertically exaggerated, recomposed, and recolored to form a fictional valley.
+https://registry.opendata.aws/terrain-tiles/
+https://github.com/tilezen/joerd/blob/master/docs/attribution.md
+
+Polyfork — Cat (CC BY 4.0). SHADOWMADE adapted the coat and selected the walking animation.
+https://polyfork.dev/asset/cat-base
+https://creativecommons.org/licenses/by/4.0/

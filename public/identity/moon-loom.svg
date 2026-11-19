@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 108">
+  <defs>
+    <linearGradient id="moon" x2=".25" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#fff0ce"/><stop offset="1" stop-color="#d59951"/></linearGradient>
+    <clipPath id="disc"><circle cx="80" cy="52" r="45"/></clipPath>
+  </defs>
+  <circle cx="80" cy="52" r="45" fill="url(#moon)"/>
+  <g clip-path="url(#disc)">
+    <path fill="#e2a764" opacity=".35" d="M42 21q18 12 32 2t38 9q-26-7-37 4T41 29Zm-4 28q23-9 35 3t43-4q-16 19-43 9T38 64Z"/>
+    <path fill="#171627" d="M26 99V75l9-9 8 9v-7h4V55l5-14 5 14v24l10-9 9 8v9h6V74l9-10 9 10h6V62l5-9 5 9v18l10-10 13 13v22Z"/>
+    <path fill="#f4c580" d="M50 60h3v5h-3zm9 22h3v6h-3zm30-3h3v6h-3zm20-11h3v5h-3zm14 16h3v5h-3z"/>
+    <path fill="none" stroke="#211b25" stroke-width="2" stroke-linecap="round" d="M64 5q18 19 42 18 15 1 24-4M80 17 66 52m25-32 7 33M108 24l12 14"/>
+    <path fill="#211b25" d="M62 42c-7 13 4 20 14 15-5 10-19 7-22-1-3-6 1-12 8-14Zm8 8 2-4 2 4 4 1-3 3v4l-3-2-4 2 1-4-3-3Z"/>
+    <path fill="#211b25" d="m98 46 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/>
+  </g>
+  <g fill="#f4ca89"><path d="m21 32 2 6 6 2-6 2-2 6-2-6-6-2 6-2Zm115 25 2 5 5 2-5 2-2 5-2-5-5-2 5-2ZM36 9l1 4 4 1-4 1-1 4-1-4-4-1 4-1Z"/><circle cx="126" cy="16" r="1.5"/><circle cx="27" cy="73" r="1.5"/></g>
+</svg>

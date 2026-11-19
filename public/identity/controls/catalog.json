@@ -1,0 +1,51 @@
+{
+  "icons": {
+    "journal": "线索手记",
+    "chime": "声音开启",
+    "silence": "静音",
+    "pause": "暂停",
+    "enter": "启程",
+    "play": "继续探索",
+    "skip": "跳过演出",
+    "exit": "离开机关",
+    "close": "关闭",
+    "restart": "重新开始",
+    "keep": "保留进度",
+    "erase": "清除存档",
+    "map": "雪镇地图",
+    "trail": "跟随主线",
+    "plaza": "旋转木马",
+    "clock": "钟楼",
+    "workshop": "影子工坊",
+    "bridge": "运河桥",
+    "market": "灯市码头",
+    "lookout": "松影坡",
+    "pier": "断桥工位",
+    "observatory": "北岸灯塔",
+    "bench": "光影台",
+    "chart": "墙上星图",
+    "return": "放回木雕",
+    "letter": "守灯人的信",
+    "footsteps": "绕幕行走",
+    "gift": "贺卡",
+    "panorama": "雪镇全景",
+    "lantern": "长街灯火",
+    "fire": "壁炉暖光",
+    "moon": "靛蓝雪夜",
+    "export": "导出",
+    "model": "三维模型",
+    "snapshot": "实机画面",
+    "archive": "资产归档",
+    "lock": "未解锁"
+  },
+  "plates": {
+    "ink": "墨青次键",
+    "brass": "暖纸主键",
+    "seal": "朱砂印记",
+    "paper": "书页选项",
+    "lit": "点亮选项"
+  },
+  "frames": {
+    "medallion": "HUD 徽章"
+  }
+}

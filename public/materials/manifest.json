@@ -1,0 +1,42 @@
+{
+  "size": 128,
+  "colorSpace": {
+    "base-color": "sRGB",
+    "normal": "linear",
+    "roughness": "linear",
+    "ao": "linear"
+  },
+  "surfaces": [
+    "carved-wood",
+    "aged-paint",
+    "plaster",
+    "wool",
+    "snow",
+    "stone",
+    "frosted-glass",
+    "roof-slate",
+    "bridge-stone"
+  ],
+  "mapConvention": "OpenGL +Y, authored porous AO; no geometry bake",
+  "atlases": {
+    "roof-slate": {
+      "size": [
+        512,
+        512
+      ],
+      "variants": 4,
+      "channels": [
+        "base-color",
+        "normal",
+        "roughness",
+        "ao"
+      ]
+    }
+  },
+  "surfaceSizes": {
+    "bridge-stone": [
+      256,
+      256
+    ]
+  }
+}

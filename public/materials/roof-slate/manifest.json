@@ -1,0 +1,29 @@
+{
+  "size": [
+    512,
+    512
+  ],
+  "layout": "2x2 authored slate variants",
+  "uvRegionInset": 0.02,
+  "uvRegionSpan": 0.46,
+  "normalConvention": "OpenGL +Y",
+  "ao": "procedural cavity authoring; not geometry bake",
+  "files": {
+    "base-color.png": {
+      "bytes": 122904,
+      "sha256": "4a226c6dda888029704b888bd9058c8ba984bd1561e496f66f4951a0269e3290"
+    },
+    "normal.png": {
+      "bytes": 31315,
+      "sha256": "53bdce59ef4bdc7d3a9e8584a62a850c4c96a08392751945201cc764d4b8e2a7"
+    },
+    "ao.png": {
+      "bytes": 4287,
+      "sha256": "e83ebbf432ac5f2f00c803b69fe68ff43f6afed75db80da084050c7a32f59098"
+    },
+    "roughness.png": {
+      "bytes": 42400,
+      "sha256": "23cce5195969441e769be3abc0e5637991083d314500d4ab5d8156743e11f146"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "batches": [
+    {
+      "items": [
+        {
+          "asset": "courier",
+          "taskId": 8294271,
+          "game": "public/models/aholo-g1-courier.glb"
+        },
+        {
+          "asset": "workshop",
+          "taskId": 8294277,
+          "game": "public/models/aholo-g1-workshop.glb"
+        },
+        {
+          "asset": "clock",
+          "taskId": 8294283,
+          "game": "public/models/aholo-g1-clock.glb"
+        },
+        {
+          "asset": "canopy",
+          "taskId": 8294287,
+          "game": "public/models/aholo-g1-canopy.glb"
+        },
+        {
+          "asset": "bookshop",
+          "taskId": 8294293,
+          "game": "public/models/aholo-g1-bookshop.glb"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "asset": "resident-a",
+          "taskId": 8296150,
+          "game": "public/models/aholo-g1-resident-a.glb"
+        },
+        {
+          "asset": "resident-b",
+          "taskId": 8296155,
+          "game": "public/models/aholo-g1-resident-b.glb"
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "asset": "lantern",
+          "taskId": 8297001,
+          "game": "public/models/aholo-g1-lantern.glb"
+        },
+        {
+          "asset": "fir",
+          "taskId": 8297006,
+          "game": "public/models/aholo-g1-fir.glb"
+        },
+        {
+          "asset": "market",
+          "taskId": 8297010,
+          "game": "public/models/aholo-g1-market.glb"
+        }
+      ]
+    }
+  ]
+}

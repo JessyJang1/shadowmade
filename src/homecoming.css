@@ -1,0 +1,43 @@
+/* The keeper's letter continues from the screen to the final postcard. */
+#game .quest-panel.dawn-guide{border:1px solid #ac926c;border-radius:3px;background:#eedec1}
+#game .dawn-guide #dawnView{padding:7px 14px 5px;color:#305155;letter-spacing:.035em}
+#game .dawn-guide #questFeedback{background:transparent;color:#342f2b;border:0;padding:0 14px 7px;line-height:1.45}
+#game .dawn-guide #questInteraction:not(:empty){background:#253b3d;color:#fff0cd;padding:6px 14px}
+#game .dawn-guide .dawn-actions{border-top:1px solid #b19874;padding:6px 12px;align-items:center}
+#game .dawn-guide.is-manipulating #questFeedback{padding-top:7px}
+#game[data-phase="finaleReveal"] #solved p{padding:12px 22px 12px 54px;border-block:1px solid #bd9e68;background:#203337f2 url('/identity/night-moth.svg') 12px center/32px no-repeat;color:#fff1d5}
+#game #discovery #giftReopen{position:static;pointer-events:auto;margin-top:6px}
+#game #giftPanel{background:linear-gradient(115deg,#f3e5ca,#e8d5b5);color:#332e29;border:1px solid #bfa079;border-top:4px solid #94774e;border-radius:2px 3px 6px 3px;width:min(405px,47vw);max-height:min(84dvh,calc(100dvh - clamp(15px,5vh,44px) - max(76px,env(safe-area-inset-top) + 54px)));display:flex;flex-direction:column;overflow:hidden;padding:18px 20px 14px}
+#giftPanel .gift-fields{min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+#giftPanel :is(header,footer){flex:none}
+#giftPanel footer .gift-choices{margin-bottom:0}
+#giftPanel .gift-postmark{margin:0;color:#695037;font-size:13px;letter-spacing:.12em}
+#game #giftPanel h2{color:#25474a;margin:5px 0 12px;line-height:1.2}
+#giftPanel fieldset{min-width:0;border:0;padding:0;margin:6px 0 9px}
+#giftPanel legend,#giftPanel label{color:#433a31;font-size:14px}
+#giftPanel .gift-choices{gap:5px;flex-wrap:wrap}
+#game #giftPanel button{font-size:14px;min-height:40px;padding-inline:7px;white-space:nowrap}
+#game #giftPanel input,#game #giftPanel textarea{background:#fff5df;color:#332e29;border:1px solid #957f60;border-radius:2px;font-size:16px}
+#game #giftPanel input::placeholder{color:#6d6052}
+#giftPanel input:focus-visible,#giftPanel textarea:focus-visible{outline:2px solid #365b61;outline-offset:1px}
+#game #giftPanel #giftStatus{color:#345248;margin:3px 0;min-height:0}
+#game #giftCaption{background:#19292de8;color:#fff0d6;border-left:2px solid #c5a776;padding:7px 12px;overflow-wrap:anywhere;pointer-events:auto;overflow:auto;overscroll-behavior:contain}
+@media(max-width:670px){
+ #game #giftPanel{width:calc(100% - 20px);max-height:60dvh;bottom:max(8px,env(safe-area-inset-bottom));right:10px;padding:9px 12px}
+ #game #giftPanel h2{margin:3px 0 6px}
+ #giftPanel fieldset{margin:2px 0 4px}
+ #giftPanel label{margin:4px 0}
+ #game #giftCaption{top:13%;bottom:auto;font-size:16px;max-height:19dvh;overflow:auto}
+ #game .dawn-guide #dawnView{padding:4px 10px 2px}
+ #game .dawn-guide #questFeedback{padding:0 10px 4px}
+ #game .dawn-guide .dawn-actions{padding:4px 8px}
+}
+
+/* Reserve the space beside the editor so a longer greeting stays visible. */
+@media(min-width:671px){
+ #game #giftCaption{max-width:min(48vw,calc(100% - min(405px,47vw) - clamp(16px,4vw,48px) - 5vw - 14px))}
+}
+@media(max-width:670px) and (orientation:landscape){
+ #game #giftPanel{width:47vw;max-height:calc(100dvh - max(8px,env(safe-area-inset-bottom)) - max(76px,env(safe-area-inset-top) + 54px))}
+ #game #giftCaption{top:auto;bottom:max(12px,env(safe-area-inset-bottom));left:max(12px,env(safe-area-inset-left));max-width:45vw;max-height:28dvh}
+}

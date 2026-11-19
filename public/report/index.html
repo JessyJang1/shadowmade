@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="《影生万物》Aholo 3D 黑客松项目报告，含三章实机、光影机制与 Lux3D 资产来源。">
+  <title>影生万物 SHADOWMADE｜项目报告</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/report/report.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="影生万物游戏首页">
+      <img src="/identity/moon-loom.svg" alt="" width="30" height="30">
+      <span>SHADOWMADE</span>
+    </a>
+    <a class="top-link" href="#lux3d">Lux3D 应用</a>
+  </header>
+  <main>
+    <section class="opening" aria-labelledby="project-title">
+      <div class="opening-copy">
+        <p class="kicker">Aholo 3D 黑客松 · 游戏应用</p>
+        <h1 id="project-title"><img src="/identity/painted-title.webp" alt="影生万物 SHADOWMADE"></h1>
+        <p class="premise">平安夜，雪镇的钟不再响。你是一道尚未拥有形体的影子，要循着守灯人留下的线索，用光和手边的物件把星星、桥和归航的灯还给小镇。</p>
+        <div class="actions">
+          <a class="primary" href="/">开始试玩 <span aria-hidden="true">→</span></a>
+          <a href="/assets.html">品牌与资产库 <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="hint">桌面浏览器打开即可玩。进入广场后，点击钟楼查看门上的纸条。</p>
+      </div>
+      <figure class="opening-image">
+        <img src="/report/media/snowtown.jpg" alt="游戏实拍，影之旅人站在雪镇广场，前方是旋转木马和钟楼" width="1440" height="900" fetchpriority="high">
+        <figcaption>雪镇广场 · 浏览器实拍</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="play" aria-labelledby="play-title">
+      <h2 id="play-title">三章，三种空间推理</h2>
+      <div class="chapters">
+        <article>
+          <figure><img src="/report/media/star.jpg" alt="两件工坊道具的投影在幕布上组合为一颗星" width="1440" height="900" loading="lazy"></figure>
+          <p class="kicker">第一章 · 组合轮廓</p>
+          <h3>失落的星星</h3>
+          <p>在旧光影工坊选择、移动和旋转两件不规则道具，移动灯源，让它们的投影互补成星。星星离幕回到钟楼，小镇重新响起钟声，街灯与木马陆续苏醒。</p>
+        </article>
+        <article>
+          <figure><img src="/report/media/bridge.jpg" alt="连接河岸的影桥实体化后的真实场景" width="1280" height="720" loading="lazy"></figure>
+          <p class="kicker">第二章 · 通路与边界</p>
+          <h3>消失的桥</h3>
+          <p>调整两块桥板与灯的位置，使影子接通落点并避开裂冰。成立的投影变成可通行的桥，玩家从西岸过河，进入灯塔所在的区域。</p>
+        </article>
+        <article>
+          <figure><img src="/report/media/lighthouse.jpg" alt="玩家从幕布另一面观察灯塔内的海灯和可移动遮光门" width="1280" height="720" loading="lazy"></figure>
+          <p class="kicker">第三章 · 双面投影</p>
+          <h3>午夜最后一束光</h3>
+          <p>绕到幕布另一侧，观察两盏灯分别如何改变暗部与透光。滑动遮光门并调整海灯，恢复归航灯。结局可写上祝福，从复苏后的实时场景导出贺卡。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="lux3d" aria-labelledby="lux-title">
+      <h2 id="lux-title">Aholo Lux3D 参与核心造物</h2>
+      <p class="section-intro">从 Lux3D 原始模型提取可用几何，在 Blender 中裁切、重建或拆分材质，再导出 GLB。Three.js 以这些实体的几何计算投影、通路和遮光。</p>
+      <dl class="provenance">
+        <div>
+          <dt>风轮铜翼与铸铜灯胆 <span>任务 8294283 · 8297001</span></dt>
+          <dd>钟房屋脊的立体起伏重新映射到风轮铜翼尖，灯胆则从原始灯具裁出，作为可操作候选件。同一摆法去掉铜翼尖，星形覆盖只剩约 90%，判定无法通过。</dd>
+        </div>
+        <div>
+          <dt>两块投影桥板 <span>任务 8297010</span></dt>
+          <dd>从集市模型的柜台表面提取轮廓与起伏，制成可拖动的桥板。其投影用于检查连通与裂冰，通关后用成立的投影生成实体桥。</dd>
+        </div>
+        <div>
+          <dt>岸灯遮光门 <span>任务 8294293</span></dt>
+          <dd>采样书店门板浮雕，重建封闭的滑门网格。海灯摆对后，若滑门仍未挡住岸灯，幕布依然泛白，机关会拒绝通过。</dd>
+        </div>
+        <div>
+          <dt>旧光影工坊与木质门牌 <span>任务 8412111 · 8412117</span></dt>
+          <dd>新版门面替换游戏中的工坊外观。Lux3D 生成木坯，Blender 加工结构和材质，再统一加刻雪镇店名。这批两项任务共消耗 40 积分。</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="section identity" aria-labelledby="identity-title">
+      <div>
+        <h2 id="identity-title">雪镇的视觉与制作</h2>
+        <p>手绘绘本式的深靛冬夜、琥珀窗光和旧木贯穿雪镇。Paper &amp; Light 界面用暖纸承载手记，用暖金标出可操作的物件，让幕布和真实投影始终清楚。</p>
+        <p>实机回归覆盖首章新存档、错误投影拦截、影桥通行、灯塔双面投影、刷新后世界恢复和 1920 × 1200 PNG 贺卡导出。</p>
+        <div class="actions">
+          <a href="/assets.html">查看品牌与资产库 <span aria-hidden="true">↗</span></a>
+          <a href="/identity/controls/index.html">查看控件与图标规范 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure>
+        <img src="/asset-library/carpenter-facade-live.jpg" alt="新版旧光影工坊外观，窗上有暖光，门口悬挂统一木制招牌" width="1440" height="900" loading="lazy">
+        <figcaption>旧光影工坊 · 浏览器实拍</figcaption>
+      </figure>
+    </section>
+  </main>
+  <footer>
+    <span>影生万物 SHADOWMADE</span>
+    <span>Aholo Lux3D · Blender · Three.js · TypeScript</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 6 168 104"><defs><g id="wing">
+<path fill="#dfa258" fill-rule="evenodd" d="M4 17 57 29 80 46 76 55 34 69 30 59 22 57 18 47 12 44Z M13 24 49 31 71 44 48 34Z M17 33 47 37 69 46 47 40Z M23 45 48 43 66 47 47 46Z M32 54 67 49 45 54 31 57Z M39 61 69 51 54 58Z"/>
+<path fill="#b7523c" fill-rule="evenodd" d="M34 74 73 59 79 71 63 90 23 107 27 93 24 86Z M34 90 63 69 51 82Z"/>
+<path fill="#e2ac6b" d="m57 10 10 5 15 25-12-27Z"/>
+</g></defs><use href="#wing"/><use href="#wing" transform="translate(168) scale(-1 1)"/><path fill="#ffe5ad" d="m84 48 2.4 8.8L94 60l-7.6 3.4L84 73l-2.4-9.6L74 60l7.6-3.2Z"/></svg>

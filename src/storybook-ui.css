@@ -1,0 +1,458 @@
+@import url("/fonts/book.css");
+
+#game {
+  --midnight: #0d1026;
+  --storybook-blue: #3e5b8f;
+  --lamp-gold: #e2b765;
+  --snow-paper: #ede8dd;
+  --paper-edge: #b88557;
+  --book-ink: #37282a;
+  --midnight-panel: linear-gradient(145deg, #293451, #101326 75%);
+  --parchment-panel: radial-gradient(ellipse at 30% 15%, #fff1d6, transparent 72%),
+    linear-gradient(110deg, #dabe9e, var(--snow-paper) 50%, #dfc19c);
+  --storybook-plate: url("/identity/controls/painted-plate.webp");
+  --display-face: "Shadowmade Book", Georgia, serif;
+}
+
+#game:is([data-phase="title"],[data-phase="boot"],[data-phase="intro"]) .atmosphere {
+  background:
+    radial-gradient(ellipse at center, #0d1026b0 0%, #0d102665 34%, transparent 74%),
+    linear-gradient(#0d102634, #0d102634);
+}
+/* The painted wordmark arrives over the live scene, then holds for input. */
+#game .title-veil {
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:#0d1026;opacity:0;
+}
+#game .storybook-lockup {position:relative}
+#game .title-sparks {
+  position:absolute;inset:0;pointer-events:none;display:none;
+  filter:drop-shadow(0 0 4px #ffb66b);
+}
+#game[data-phase="title"] .title-sparks {display:block}
+#game .title-sparks i {
+  position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);
+  background:radial-gradient(circle,#fffbe7 10%,#ffdc8d 40%,#d99c53 100%);
+  clip-path:polygon(50% 0,57% 41%,100% 50%,57% 59%,50% 100%,43% 59%,0 50%,43% 41%);
+  opacity:0;
+  animation:cover-spark 5.6s var(--wait) ease-in-out infinite;
+}
+#game .title-sparks i:nth-child(1){--x:73.5%;--y:29%;--size:clamp(12px,1.9vw,25px);--wait:1.16s}
+#game .title-sparks i:nth-child(2){--x:44.3%;--y:64%;--size:clamp(11px,2vw,27px);--wait:2.55s}
+#game .title-sparks i:nth-child(3){--x:53%;--y:8%;--size:clamp(9px,1.35vw,18px);--wait:1.6s}
+#game .title-sparks i:nth-child(4){--x:8.6%;--y:39%;--size:clamp(9px,1.45vw,19px);--wait:3.05s}
+#game .title-sparks i:nth-child(5){--x:78.3%;--y:16%;--size:clamp(8px,1.25vw,16px);--wait:3.8s}
+@keyframes cover-spark {
+  0%,21%,100% {opacity:0;transform:translate(-50%,-50%) scale(.24) rotate(12deg)}
+  8% {opacity:.96;transform:translate(-50%,-50%) scale(1.18) rotate(-7deg)}
+  13% {opacity:.53;transform:translate(-50%,-50%) scale(.74) rotate(-4deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  #game[data-phase="title"] .title-sparks {display:none}
+}
+#game[data-phase="boot"] .title-veil {opacity:.82}
+#game[data-phase="boot"] .storybook-lockup,
+#game[data-phase="boot"] #start {visibility:hidden}
+#game[data-phase="title"] .title-veil {animation:cover-unveil 1.65s ease-out both}
+#game[data-phase="title"] .storybook-lockup {
+  animation:cover-wordmark 1.62s .12s cubic-bezier(.16,1,.3,1) both;
+}
+#game[data-phase="title"] .opening-logo {
+  animation:cover-gold 6.8s 1.74s ease-in-out infinite;
+}
+#game[data-phase="title"] #start {
+  animation:cover-start .94s .53s cubic-bezier(.16,1,.3,1) both;
+}
+#game[data-phase="title"] #start:focus-visible {animation:none}
+@keyframes cover-unveil {from{opacity:.82}to{opacity:0}}
+@keyframes cover-wordmark {
+  from{opacity:0;transform:translateY(26px) scale(.957)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes cover-start {
+  from{opacity:.25;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes cover-gold {
+  0%,100%{filter:drop-shadow(0 5px 14px #08091ac7)}
+  50%{filter:drop-shadow(0 5px 14px #08091ac7) drop-shadow(0 0 8px #ffc98250)}
+}
+@media(prefers-reduced-motion:reduce){
+  #game[data-phase="title"] :is(.title-veil,.storybook-lockup,.opening-logo,#start){animation:none}
+}
+
+#game #title {
+  inset:0;
+  width:100%;
+  max-width:none;
+  transform:none;
+  place-content:center;
+  pointer-events:none;
+}
+#game #title #start {pointer-events:auto}
+#game .storybook-lockup .opening-logo {
+  width:min(clamp(480px,65vw,900px), calc(100vw - 36px), 170dvh);
+  max-width:100%;
+  filter:drop-shadow(0 5px 14px #08091ac7);
+  mask-image:linear-gradient(transparent,#000 5%);
+}
+#game #title #loading {
+  position:absolute;
+  bottom:max(18px,env(safe-area-inset-bottom));
+  margin:0;
+  align-self:start;
+}
+
+#game :is(button,summary,.download) {
+  --plate:var(--storybook-plate);
+  border-image:var(--plate) 26% 22% fill / 10px 19px / 0 stretch;
+}
+#game :is(#start,#resume,#giftSave) {
+  --plate:var(--storybook-plate);
+  border-image:var(--plate) 26% 22% fill / 12px 30px / 0 stretch;
+  color:#fff1cc;border-color:transparent;
+  padding-inline:26px;font-weight:650;
+}
+#game #start {
+  box-sizing:border-box;
+  min-width:196px;min-height:46px;justify-content:center;
+  margin-top:clamp(14px,2.6vh,25px);
+  font:500 16px/1.2 var(--ui);letter-spacing:.13em;
+  border-image:none;background:url("/identity/controls/painted-start.webp") center / 100% 100% no-repeat;
+  color:transparent;
+}
+#game #start::before {display:none}
+#game button:hover:not(:disabled) {filter:brightness(1.22)}
+#game button:active:not(:disabled) {filter:brightness(.9)}
+#game button:focus-visible,#game summary:focus-visible {outline:2px solid #ffdf9b;outline-offset:2px}
+#game button:disabled {cursor:default;filter:saturate(.38)}
+#game .icon {
+  border:0;border-radius:50%;
+  background:radial-gradient(circle,#26304f 58%,#151831 63%,#c8975c 65%,#14172a 69%,transparent 71%);
+}
+
+#game :is(#pausePane>div,#error>div,.quest-panel:not(.dawn-guide),#giftCaption) {
+  background:var(--midnight-panel);color:#fff1d5;
+  border:1px solid #b68958;border-radius:3px;
+}
+#game :is(.modal>.paper-dialog,.discovery,.quest-panel.dawn-guide,#giftPanel) {
+  background:var(--parchment-panel);color:var(--book-ink);
+  border:1px solid var(--paper-edge);border-radius:3px;
+  box-shadow:inset 0 0 13px #8056312b,0 8px 22px #0d10263b;
+}
+#game :is(.chapter,.modal,.gift-panel) h2 {
+  font-family:var(--display-face);font-weight:500;letter-spacing:.035em;
+}
+#game :is(.paper-dialog,#giftPanel) h2 {color:var(--book-ink)}
+#game .paper-dialog button {--plate:var(--storybook-plate);color:#fff1d5}
+#game .quest-panel .quest-interaction:not(:empty) {background:#1c2441;color:#ffe3b3}
+#game .gift-choices button[aria-pressed="true"] {color:#201927;background:#e3b979;border:1px solid #77512c;border-image:none}
+#game #giftPanel input:focus-visible,#game #giftPanel textarea:focus-visible {outline-color:var(--storybook-blue)}
+
+@media(max-aspect-ratio:4/5) {
+  #game .storybook-lockup .opening-logo {width:min(92vw,540px)}
+}
+
+/* Preserve the engraved corners as panels grow around live content. */
+#game :is(.modal>.paper-dialog,#pausePane>div,#error>div,#giftPanel) {
+  border-image:url("/identity/controls/painted-panel.webp") 18% / 17px / 0 stretch;
+}
+
+#game .chapter {
+  width:clamp(230px,23vw,340px);
+  min-height:74px;
+  display:grid;
+  place-content:center;
+  padding:10px 34px 11px;
+  background:url("/identity/storybook/chapter.webp") center / 100% 100% no-repeat;
+  color:var(--book-ink);
+  text-align:center;
+  text-shadow:none;
+}
+#game .chapter .eyebrow {color:#6b3f28;margin:0 0 4px;font-size:12px}
+#game .chapter h2 {font-size:clamp(16px,1.65vw,27px);line-height:1.18;letter-spacing:.02em}
+#game #note .paper-dialog {
+  color:var(--book-ink);
+  border:0;
+  background:transparent;
+  border-image:url("/identity/storybook/note.webp") 25% fill / 28px / 0 stretch;
+  box-shadow:none;
+}
+#game #benchHelp {
+  padding-inline:clamp(40px,4vw,62px) 19px;
+  color:var(--book-ink);
+  background:transparent;
+  border:0;
+  border-image:url("/identity/storybook/prompt.webp") 25% 20% 25% 26% fill / 12px 22px 12px 44px / 0 stretch;
+}
+#game #benchHelp p {color:var(--book-ink)}
+#game #benchHelp #carvingName {color:#5d3020;border-color:#82634280}
+#game #solved p {
+  max-width:calc(100% - 30px);
+  padding:10px 21px 10px 46px;
+  border:1px solid var(--paper-edge);
+  background:url("/identity/storybook/star.webp") 11px center / 25px no-repeat,var(--midnight-panel);
+  border-image:url("/identity/controls/painted-panel.webp") 18% / 13px / 0 stretch;
+}
+#game #journal {--story-icon:url("/identity/storybook/journal.webp")}
+#game #sound {--story-icon:url("/identity/storybook/sound.webp")}
+#game #sound[aria-pressed="true"] {--story-icon:url("/identity/storybook/muted.webp")}
+#game #pause {--story-icon:url("/identity/storybook/pause.webp")}
+#game #minimap {--story-icon:url("/identity/storybook/map.webp")}
+#game #giftReopen {--story-icon:url("/identity/storybook/gift.webp")}
+#game #marker-bench {--story-icon:url("/identity/storybook/lantern.webp")}
+#game :is(#journal,#sound,#pause,#giftReopen,#marker-bench)::before,#game #minimap>span::before {
+  background:var(--story-icon) center / contain no-repeat;
+  mask:none;
+}
+#game .icon::before {width:25px;height:25px}
+#game #minimap>span::before {width:20px;height:20px}
+
+@media(max-width:630px) {
+  #game .chapter {width:min(216px,57vw);min-height:61px;padding:9px 20px}
+  #game #benchHelp {padding-inline:36px 12px}
+  #game #benchHelp #carvingName {font-size:15px}
+}
+
+/* The map, legend and destinations are printed on the same unfolded sheet. */
+#game #mapPane .map-sheet {
+  max-width:min(800px,calc(74.66dvh + 48px),96vw);
+  padding:17px 23px 18px;
+  color:#382633;
+  border:1px solid #a07851;
+  border-radius:5px;
+  background:linear-gradient(#fff1d278,#fff1d278),url("/identity/town-map/snow-paper.webp") center / cover;
+  box-shadow:inset 0 0 18px #65455739,0 14px 40px #0908178c;
+}
+#game #mapPane .map-top {
+  padding-bottom:6px;
+  border-bottom:1px solid #9c765966;
+}
+#game #mapTitle {color:#392535;font:500 21px/1.3 var(--ui);letter-spacing:.025em}
+#game #mapClose,#game #mapStory {
+  color:#513244;
+  border:1px solid #9d785e99;
+  border-image:none;
+  border-radius:3px;
+  background:#f6e5c3;
+}
+#game #mapClose:hover,#game #mapStory:hover {background:#fff3d8}
+#game #mapPane button:focus-visible,#game #minimap:focus-visible {
+  outline-color:#664955;
+}
+#game canvas#mapLarge {
+  background:transparent;
+  width:min(100%,74.66dvh);
+  max-height:none;
+  margin-inline:auto;
+  border-radius:2px;
+}
+#game .map-route #mapLegend {color:#503847;font:450 14px/1.55 var(--ui)}
+#game .map-destinations {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  padding-top:6px;
+  border-top:1px solid #9c765966;
+}
+#game .map-destinations button {
+  font-weight:450;
+  color:#4b3141;
+  background:#fff0d04d;
+  border:1px solid transparent;
+  border-image:none;
+  border-radius:3px;
+}
+#game .map-destinations button:is(:enabled:hover,[aria-pressed="true"]) {
+  color:#472b40;
+  background:#fbe6b9;
+  border-color:#997148;
+}
+#game .map-destinations button[aria-pressed="true"]::before {background:#8e6140}
+#game .map-destinations button:disabled {color:#5c4850;background:transparent;opacity:1;filter:none}
+#game .map-destinations small {color:#6c5058}
+#game #minimap {
+  color:#4a3042;
+  background:#ecd6ac url("/identity/town-map/snow-paper.webp") center / cover;
+  border:1px solid #9e795a;
+  border-image:none;
+  border-radius:3px;
+}
+#game #minimap small {border-color:#8f6a5977}
+@media(max-width:630px) {
+  #game #mapPane .map-sheet {padding:12px}
+  #game .map-destinations {grid-template-columns:repeat(3,minmax(0,1fr))}
+  #game .map-destinations button {font-size:14px}
+}
+
+@media(max-height:640px) and (min-width:550px) and (min-aspect-ratio:4/3) {
+  #game #mapPane .map-sheet {
+    max-width:min(800px,100%);display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+    gap:6px 14px;padding:12px 16px;
+  }
+  #game #mapPane .map-top {grid-column:1 / -1;margin:0}
+  #game canvas#mapLarge {
+    grid-row:2 / span 2;align-self:start;
+    max-height:calc(100dvh - 98px);object-fit:contain;
+  }
+  #game .map-route {min-width:0;margin:0;flex-wrap:wrap}
+  #game .map-route #mapLegend {margin:0}
+  #game .map-destinations {grid-column:2;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-height:480px) and (min-width:550px) {
+  #game[data-phase="quest"] .stamp {visibility:hidden}
+  #game[data-phase="quest"] .chapter {top:max(12px,env(safe-area-inset-top));min-height:60px}
+}
+
+@media(max-width:360px) {
+  #game canvas#mapLarge {width:94%}
+}
+
+#game[data-phase="intro"] .atmosphere {animation:entry-clear 1.78s ease-out both}
+#game[data-phase="intro"] #title {animation:entry-clear .55s ease-in both}
+#game[data-phase="intro"] #title #start {pointer-events:none}
+@keyframes entry-clear {from{opacity:1}to{opacity:0}}
+#game.first-step :is(#chapter,#exploreHelp) {display:none}
+
+/* Scene locations, local actions and the HUD objective use different silhouettes. */
+#game #markers .world-marker {
+  display:grid;
+  justify-items:center;
+  align-content:center;
+  gap:5px;
+  min-width:44px;min-height:44px;
+  padding:4px 7px;
+  color:#fff0d0;
+  border:0;border-image:none;border-radius:0;
+  background:transparent;box-shadow:none;
+  font:500 14px/1.25 var(--ui);
+  text-shadow:0 1px 4px #100c19,0 1px 9px #100c19;
+}
+#game #markers .world-marker .marker-action,
+#game #markers .world-marker .marker-key,
+#game #markers [data-marker-role="landmark"] .marker-name,
+#game #markers [data-marker-role="action"] .marker-name {display:none}
+#game #markers [data-marker-role="waypoint"] {z-index:1;color:#ffe6ac}
+#game #markers [data-marker-role="waypoint"]::before {
+  width:30px;height:30px;
+  background:url("/identity/storybook/waypoint-contrast.webp") center / contain no-repeat;
+  mask:none;
+  transform:none;
+  filter:drop-shadow(0 0 1px #fff0c2) drop-shadow(0 1px 2px #201526);
+}
+#game #markers [data-marker-role="landmark"]::before {
+  width:19px;height:19px;
+  opacity:.62;
+  filter:drop-shadow(0 1px 3px #110e1e);
+}
+#game #markers [data-marker-role="landmark"]:is(:hover,:focus-visible)::before {opacity:1}
+#game #markers [data-marker-role="landmark"]:is(:hover,:focus-visible) .marker-name {display:block}
+#game #markers [data-marker-role="action"] {
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:8px 20px;
+  color:#ffedc5;
+  border:0;
+  border-image:url("/identity/storybook/action-art.webp") 26% 22% fill / 12px 26px / 0 stretch;
+  filter:drop-shadow(0 3px 6px #140d1bb3);
+}
+#game #markers [data-marker-role="action"]:not(.touch-action-label)::before {display:none}
+#game #markers [data-marker-role="action"] .marker-action {display:block}
+#game #markers [data-marker-role="action"]:not(.touch-action-label) .marker-key {
+  display:inline-grid;place-items:center;
+  width:24px;height:24px;
+  border:1px solid #d5ac74;
+  border-radius:3px;
+  background:#e7c897;
+  color:#2e2130;
+  font:650 14px/1 var(--ui);
+  text-shadow:none;
+}
+#game #discovery {
+  color:#3b2930;
+  background:transparent;
+  border:0;
+  border-image:url("/identity/storybook/objective-art.webp") 26% 21% 26% 25% fill / 14px 27px 14px 40px / 0 stretch;
+  padding:10px 24px 12px 44px;
+  box-shadow:none;text-shadow:none;
+  filter:drop-shadow(0 4px 9px #2114285e);
+}
+#game #discovery :is(#zone,#taskGuide) {color:#6c4636}
+#game #discovery #task {font:500 clamp(15px,1.25vw,18px)/1.45 var(--ui)}
+
+#viewActions {
+  position:absolute;
+  right:clamp(12px,4vw,58px);
+  bottom:max(12px,env(safe-area-inset-bottom));
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:6px;
+  max-width:calc(100% - 24px);
+}
+#viewActions .pill {position:static;min-height:44px;padding-inline:16px}
+#game #markers [data-marker-role="landmark"]:is(.scene-hover,:hover,:focus-visible) .marker-name {
+  display:block;
+}
+#game #markers .world-marker:is(.scene-hover,:hover) {
+  color:#fff2cb;
+  filter:brightness(1.25) drop-shadow(0 0 6px #e0a85b8c);
+}
+#game #travelerPreview .paper-dialog {text-align:center;width:min(410px,92vw)}
+#travelerPreview img {display:block;margin:0 auto 8px;max-width:70%;height:min(42dvh,310px);object-fit:contain}
+#travelerPreview p {font-size:15px}
+
+#game .opening-guide {
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:max(24px,calc(env(safe-area-inset-bottom) + 14px));
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:calc(100% - 32px);
+  margin:0;
+  padding:9px 16px;
+  border:1px solid #c9996b77;
+  border-radius:4px;
+  background:#201a2be8;
+  color:#ffecc9;
+  box-shadow:0 3px 13px #0e0a1773;
+  font:500 clamp(15px,1.4vw,17px)/1.47 var(--ui);
+  text-align:center;
+  pointer-events:none;
+  animation:appear .40s both;
+}
+
+@media(max-width:630px) {
+  #game:has(#backView:not([hidden])) .opening-guide {
+    bottom:max(65px,calc(env(safe-area-inset-bottom) + 57px));
+  }
+}
+
+#game #note.clock-note {
+  background:#100e1a70;
+}
+#game #note.clock-note .paper-dialog {
+  padding:30px clamp(20px,5vw,43px);
+  width:min(440px,calc(100vw - 44px));
+}
+#game #note.clock-note #noteBody p {
+  animation:clock-ink .44s .13s ease-out both;
+}
+#game #note.clock-note #noteBody p+p {
+  animation-delay:.47s;
+}
+@keyframes clock-ink {
+  from {opacity:0;clip-path:inset(0 100% 0 0);transform:translateY(3px)}
+  to {opacity:1;clip-path:inset(0);transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce) {
+  #game .opening-guide,
+  #game #note.clock-note #noteBody p {
+    animation:none;
+  }
+}

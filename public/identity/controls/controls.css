@@ -1,0 +1,99 @@
+/* SHADOWMADE · carved action glyphs and nine-slice control plates. */
+#journal,#marker-ledger,.dawn-help summary,[data-glyph="journal"]{--ui-glyph:url("./journal.svg")}
+#sound,[data-glyph="chime"]{--ui-glyph:url("./chime.svg")}
+#sound[aria-pressed="true"],[data-glyph="silence"]{--ui-glyph:url("./silence.svg")}
+#pause,[data-glyph="pause"]{--ui-glyph:url("./pause.svg")}
+#start,[data-glyph="enter"]{--ui-glyph:url("./enter.svg")}
+#resume,[data-glyph="play"]{--ui-glyph:url("./play.svg")}
+#skip,#skipScene,[data-glyph="skip"]{--ui-glyph:url("./skip.svg")}
+#questExit,#leaveBench,#giftExit,#marker-door,[data-glyph="exit"]{--ui-glyph:url("./exit.svg")}
+#mapClose,#closeNote,[data-glyph="close"]{--ui-glyph:url("./close.svg")}
+#replay,#reloadGame,#reset,[data-glyph="restart"]{--ui-glyph:url("./restart.svg")}
+#keepProgress,[data-glyph="keep"]{--ui-glyph:url("./keep.svg")}
+#confirmReplay,[data-glyph="erase"]{--ui-glyph:url("./erase.svg")}
+#minimap,[data-glyph="map"]{--ui-glyph:url("./map.svg")}
+#mapStory,[data-glyph="trail"]{--ui-glyph:url("./trail.svg")}
+#marker-plaza,[data-destination="plaza"],[data-glyph="plaza"]{--ui-glyph:url("./plaza.svg")}
+#marker-clock,[data-destination="clock"],[data-glyph="clock"]{--ui-glyph:url("./clock.svg")}
+#marker-workshop,[data-destination="workshop"],[data-glyph="workshop"]{--ui-glyph:url("./workshop.svg")}
+#marker-bridge,[data-destination="bridge"],[data-glyph="bridge"]{--ui-glyph:url("./bridge.svg")}
+#marker-market,[data-destination="market"],[data-glyph="market"]{--ui-glyph:url("./market.svg")}
+#marker-lookout,[data-destination="lookout"],[data-glyph="lookout"]{--ui-glyph:url("./lookout.svg")}
+#marker-pier,[data-destination="pier"],[data-glyph="pier"]{--ui-glyph:url("./pier.svg")}
+#lighthouseGuide,[data-frame="2"],#marker-observatory,[data-destination="observatory"],[data-glyph="observatory"]{--ui-glyph:url("./observatory.svg")}
+#marker-bench,[data-glyph="bench"]{--ui-glyph:url("./bench.svg")}
+#marker-chart,[data-glyph="chart"]{--ui-glyph:url("./chart.svg")}
+#returnPiece,[data-glyph="return"]{--ui-glyph:url("./return.svg")}
+[data-dawn-guide="5"],[data-glyph="letter"]{--ui-glyph:url("./letter.svg")}
+[data-dawn-guide],[data-glyph="footsteps"]{--ui-glyph:url("./footsteps.svg")}
+#giftReopen,[data-glyph="gift"]{--ui-glyph:url("./gift.svg")}
+[data-frame="0"],[data-glyph="panorama"]{--ui-glyph:url("./panorama.svg")}
+[data-frame="1"],[data-glyph="lantern"]{--ui-glyph:url("./lantern.svg")}
+[data-mood="warm"],[data-glyph="fire"]{--ui-glyph:url("./fire.svg")}
+[data-mood="blue"],[data-glyph="moon"]{--ui-glyph:url("./moon.svg")}
+#giftSave,#download,[data-glyph="export"]{--ui-glyph:url("./export.svg")}
+#model-view,[data-glyph="model"]{--ui-glyph:url("./model.svg")}
+#game-view,[data-glyph="snapshot"]{--ui-glyph:url("./snapshot.svg")}
+[data-filter],[data-glyph="archive"]{--ui-glyph:url("./archive.svg")}
+[data-glyph="lock"]{--ui-glyph:url("./lock.svg")}
+
+:is(#game,#control-sheet,.asset-interface) :is(button,summary,.download){
+  --plate:url("./ink-plate.svg");
+  border:1px solid transparent;border-image:var(--plate) 8 fill / 8px / 0 stretch;
+  background:transparent;color:#fff0d4;border-radius:0;
+}
+:is(#game,#control-sheet,.asset-interface) :is(button,summary,.download):hover{
+  filter:brightness(1.12);
+}
+:is(#game,#control-sheet,.asset-interface) :is(button,summary,.download):focus-visible{
+  outline:2px solid #ffd998;outline-offset:2px;
+}
+:is(#game,#control-sheet,.asset-interface) :is(button,summary,.download):active:not(:disabled){
+  filter:brightness(.89);
+}
+:is(#game,#control-sheet,.asset-interface) :is(button,summary,.download):disabled{
+  opacity:.62;filter:saturate(.35);
+}
+:is(#game,#control-sheet,.asset-interface) :is(button,summary,.download):not(.minimap,.card)::before,
+#game .minimap>span::before{
+  content:"";display:inline-block;width:1.18em;height:1.18em;flex:none;
+  margin:0 .36em 0 0;vertical-align:-.21em;background:currentColor;
+  mask:var(--ui-glyph,linear-gradient(transparent,transparent)) center / contain no-repeat;transform:none;
+}
+#game #start,.asset-interface .download,#game #giftSave,#control-sheet .primary{
+  --plate:url("./brass-plate.svg");color:#302722;box-shadow:none;
+}
+#game #start::before{order:1;margin:0;width:23px;height:23px}
+#game #confirmReplay,#control-sheet .destructive{--plate:url("./seal-plate.svg")}
+#game .paper-dialog button,#control-sheet .paper{--plate:url("./paper-plate.svg");color:#352c24}
+:is(#game,#control-sheet,.asset-interface) button:is([aria-pressed="true"],.current-destination,.within-reach,.selected){
+  --plate:url("./lit-plate.svg");color:#ffdf9f;
+}
+#game .icon,#control-sheet .icon{
+  width:44px;height:44px;padding:0;display:inline-grid;place-items:center;
+  background:transparent url("./medallion.svg") center / contain no-repeat;border:0;
+}
+#game .icon::before,#control-sheet .icon::before{margin:0;width:23px;height:23px}
+#game #sound[aria-pressed="true"]{color:#d3b491}
+#game .minimap>span::before{width:17px;height:17px;margin:0 5px 0 0}
+#game .minimap>span b{flex:1;text-align:left}
+#game .world-marker::before{margin:0;width:16px;height:16px}
+#game .world-marker{gap:5px}
+#game .map-destinations button:disabled{--ui-glyph:url("./lock.svg")}
+#game .dawn-help summary{width:fit-content;padding:5px 10px;cursor:pointer;list-style:none}
+#game .dawn-help summary::-webkit-details-marker{display:none}
+#game .dawn-help summary::after{content:"⌄";margin-left:.4em}
+#game .dawn-help[open] summary::after{content:"⌃"}
+@media(max-width:630px) and (orientation:portrait){
+  #game #returnPiece{padding-inline:7px}
+  #game #returnPiece::before{width:14px;height:14px;margin-right:3px}
+}
+
+#game button,#game summary,#control-sheet button{font-family:var(--ui,"Shadowmade Sans",sans-serif);font-weight:500;text-shadow:none}
+#game #start{gap:32px;min-height:48px;padding:10px 21px;letter-spacing:.06em;font-weight:600}
+#game #start::before{width:19px;height:19px}
+#game .map-destinations button{border-image:none;background:#25323c;border:1px solid #6f797833;border-radius:4px;color:#f2eade}
+#game .map-destinations button[aria-pressed="true"]{background:#3b504e;border-color:#bbcbb5;color:#fff5d9}
+#game .map-destinations button:disabled{background:#252e35;color:#ced2cf;opacity:.74}
+#game .map-destinations button:enabled:hover{background:#344647}
+#game .icon::before{width:21px;height:21px}

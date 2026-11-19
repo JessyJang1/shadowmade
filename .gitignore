@@ -1,0 +1,19 @@
+node_modules/
+node_modules
+dist/
+.venv/
+.DS_Store
+
+# Local raw recordings stay outside future Git history.
+evidence/**/*.mp4
+evidence/**/*.webm
+
+# Generated local competition review bundles; never publish automatically.
+deliverables/
+__pycache__/
+
+# Local Studio snapshot contains internal references and complete previews.
+/studio/.local/
+
+# Local render outputs.
+/renders/
