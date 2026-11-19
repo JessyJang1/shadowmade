@@ -3,11 +3,13 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {catalog,type Asset} from './catalog';
+import modelThumbnailIds from './model-thumbnails.json' with {type:'json'};
 import {gameName} from '../storyIdentity';
 import './style.css';
 
 const base=import.meta.env.BASE_URL;
 const pictures=base+'asset-library/';
+const modelThumbnails=new Set(modelThumbnailIds);
 const params=new URLSearchParams(location.search);
 const requested=catalog.find(asset=>asset.id===params.get('asset'));
 const isAholo=(asset:Asset)=>Boolean(asset.task||asset.relatedTasks?.length);
@@ -96,6 +98,9 @@ new ResizeObserver(()=>{
 function image(file:string,alt:string){
   const img=document.createElement('img');img.src=pictures+file;img.alt=alt;return img;
 }
+function modelThumbnail(asset:Asset){
+  return asset.image??(modelThumbnails.has(asset.id)?'thumbnails/'+asset.id+'.jpg':undefined);
+}
 async function show(next:typeof mode){
   const asset=selection,version=++revision;
   mode=next;
@@ -110,7 +115,8 @@ async function show(next:typeof mode){
     return;
   }
   hint.textContent='正在载入 3D 模型…';
-  if(asset.image)preview.append(image(asset.image,asset.name+'的生成预览'));
+  const still=modelThumbnail(asset);
+  if(still)preview.append(image(still,asset.name+'的模型预览'));
   try{
     const display=ensureRenderer();
     const {scene:assetScene}=await loader.loadAsync(base+'models/'+asset.file);
@@ -151,9 +157,10 @@ function drawGrid(){
     [asset.name,asset.kind,asset.location,asset.file,asset.task,asset.relatedTasks].join(' ').toLowerCase().includes(query));
   element('empty').hidden=filtered.length>0;
   const grid=element('grid');grid.replaceChildren(...filtered.map(asset=>{
-    const card=document.createElement('button');card.className='card';card.setAttribute('aria-pressed',String(asset===selection));
+    const card=document.createElement('button');card.className='card';card.dataset.assetId=asset.id;card.setAttribute('aria-pressed',String(asset===selection));
     const art=document.createElement('div');art.className='card-media';
-    if(asset.image||asset.scene){const img=image(asset.image??asset.scene!,'');img.loading='lazy';art.append(img);}
+    const still=modelThumbnail(asset)??asset.scene;
+    if(still){const img=image(still,'');img.loading='lazy';art.append(img);}
     else{art.textContent=asset.file?'3D':'场景';art.classList.add('card-placeholder');}
     const text=document.createElement('div');text.className='card-label';
     const name=document.createElement('strong');name.textContent=asset.name;
