@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="《影生万物》Aholo 3D 黑客松项目报告，含三章实机、光影机制与 Lux3D 资产来源。">
+  <meta name="description" content="《影生万物》是一款手绘绘本风格的 3D 光影解谜游戏。用物件和灯光拼出影子，亲手唤醒雪镇。">
   <title>影生万物 SHADOWMADE｜项目报告</title>
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/report/report.css">
@@ -14,92 +14,108 @@
       <img src="/identity/moon-loom.svg" alt="" width="30" height="30">
       <span>SHADOWMADE</span>
     </a>
-    <a class="top-link" href="#lux3d">Lux3D 应用</a>
+    <nav aria-label="报告目录">
+      <a href="#aholo">Aholo 资产</a>
+      <a href="#chapters">三章玩法</a>
+    </nav>
   </header>
   <main>
     <section class="opening" aria-labelledby="project-title">
       <div class="opening-copy">
         <p class="kicker">Aholo 3D 黑客松 · 游戏应用</p>
-        <h1 id="project-title"><img src="/identity/painted-title.webp" alt="影生万物 SHADOWMADE"></h1>
-        <p class="premise">平安夜，雪镇的钟不再响。你是一道尚未拥有形体的影子，要循着守灯人留下的线索，用光和手边的物件把星星、桥和归航的灯还给小镇。</p>
+        <h1 id="project-title"><img src="/identity/painted-title.webp" alt="影生万物 SHADOWMADE" width="1150" height="415"></h1>
+        <h2 class="intro-label">作品介绍</h2>
+        <p class="premise">平安夜，雪镇的钟停了。你是一道还没有形体的影子，循着一张纸条走进旧工坊，发现两件普通物品的影子合在一起，竟能拼出一颗星。</p>
+        <p class="premise">这是一款手绘绘本风格的 3D 解谜游戏。亲手摆动物件、挪动灯光，把影子变成能走过去的桥，重新点亮灯塔。故事结束时，你可以把亲手唤醒的雪镇做成一张圣诞贺卡。</p>
         <div class="actions">
-          <a class="primary" href="/">开始试玩 <span aria-hidden="true">→</span></a>
-          <a href="/assets.html">品牌与资产库 <span aria-hidden="true">↗</span></a>
+          <a class="primary" href="/">开始试玩</a>
+          <a href="/assets.html?source=aholo">查看 Aholo 资产库</a>
         </div>
-        <p class="hint">桌面浏览器打开即可玩。进入广场后，点击钟楼查看门上的纸条。</p>
+        <p class="hint">从「开始」进入雪镇，再点钟楼门上的纸条。</p>
       </div>
       <figure class="opening-image">
-        <img src="/report/media/snowtown.jpg" alt="游戏实拍，影之旅人站在雪镇广场，前方是旋转木马和钟楼" width="1440" height="900" fetchpriority="high">
-        <figcaption>雪镇广场 · 浏览器实拍</figcaption>
+        <img src="/report/media/snowtown.jpg" alt="影之旅人站在雪镇广场，前方是旋转木马和钟楼" width="1440" height="900" fetchpriority="high">
+        <figcaption>雪镇广场 · 游戏实拍</figcaption>
       </figure>
     </section>
 
-    <section class="section" id="play" aria-labelledby="play-title">
-      <h2 id="play-title">三章，三种空间推理</h2>
-      <div class="chapters">
-        <article>
-          <figure><img src="/report/media/star.jpg" alt="两件工坊道具的投影在幕布上组合为一颗星" width="1440" height="900" loading="lazy"></figure>
-          <p class="kicker">第一章 · 组合轮廓</p>
-          <h3>失落的星星</h3>
-          <p>在旧光影工坊选择、移动和旋转两件不规则道具，移动灯源，让它们的投影互补成星。星星离幕回到钟楼，小镇重新响起钟声，街灯与木马陆续苏醒。</p>
-        </article>
-        <article>
-          <figure><img src="/report/media/bridge.jpg" alt="连接河岸的影桥实体化后的真实场景" width="1280" height="720" loading="lazy"></figure>
-          <p class="kicker">第二章 · 通路与边界</p>
-          <h3>消失的桥</h3>
-          <p>调整两块桥板与灯的位置，使影子接通落点并避开裂冰。成立的投影变成可通行的桥，玩家从西岸过河，进入灯塔所在的区域。</p>
-        </article>
-        <article>
-          <figure><img src="/report/media/lighthouse.jpg" alt="玩家从幕布另一面观察灯塔内的海灯和可移动遮光门" width="1280" height="720" loading="lazy"></figure>
-          <p class="kicker">第三章 · 双面投影</p>
-          <h3>午夜最后一束光</h3>
-          <p>绕到幕布另一侧，观察两盏灯分别如何改变暗部与透光。滑动遮光门并调整海灯，恢复归航灯。结局可写上祝福，从复苏后的实时场景导出贺卡。</p>
-        </article>
+    <section class="section" id="aholo" aria-labelledby="aholo-title">
+      <h2 id="aholo-title">Aholo Lux3D 做出的雪镇</h2>
+      <p class="section-intro">从广场上的木马，到工坊里玩家亲手拿起的道具，以下模型都来自 Aholo Lux3D 的生成结果。点开任一件，可以转动三维模型、看游戏实拍和查任务号。</p>
+      <div class="asset-gallery">
+        <a class="asset-preview" href="/assets.html?source=aholo&amp;asset=aholo-workshop-carpenter">
+          <img src="/asset-library/carpenter-facade-live.jpg" alt="街上的雪顶工坊与亮着灯的木窗" width="950" height="593" loading="lazy">
+          <strong>旧光影工坊</strong><span>任务 8412111</span>
+        </a>
+        <a class="asset-preview" href="/assets.html?source=aholo&amp;asset=clock">
+          <img src="/asset-library/scene-clock.webp" alt="游戏中圣诞钟楼的钟房与尖屋顶" width="1080" height="675" loading="lazy">
+          <strong>钟楼的钟房与屋顶</strong><span>任务 8294283</span>
+        </a>
+        <a class="asset-preview" href="/assets.html?source=aholo&amp;asset=nightwatch-horse">
+          <img src="/asset-library/nightwatch-live.webp" alt="中央广场旋转木马上的雕花木马" width="640" height="400" loading="lazy">
+          <strong>守灯人的夜巡马</strong><span>任务 8355224</span>
+        </a>
+        <a class="asset-preview" href="/assets.html?source=aholo&amp;asset=aholo-wooden-signs">
+          <img src="/asset-library/carpenter-bookshop-live.jpg" alt="月羽书店门口的胡桃木招牌" width="950" height="593" loading="lazy">
+          <strong>雪镇木质门牌</strong><span>任务 8412117</span>
+        </a>
+      </div>
+      <div class="actions">
+        <a href="/assets.html?source=aholo">打开完整 Aholo 资产库</a>
+        <a href="/assets.html">浏览全部制作资产</a>
       </div>
     </section>
 
-    <section class="section" id="lux3d" aria-labelledby="lux-title">
-      <h2 id="lux-title">Aholo Lux3D 参与核心造物</h2>
-      <p class="section-intro">从 Lux3D 原始模型提取可用几何，在 Blender 中裁切、重建或拆分材质，再导出 GLB。Three.js 以这些实体的几何计算投影、通路和遮光。</p>
-      <dl class="provenance">
-        <div>
-          <dt>风轮铜翼与铸铜灯胆 <span>任务 8294283 · 8297001</span></dt>
-          <dd>钟房屋脊的立体起伏重新映射到风轮铜翼尖，灯胆则从原始灯具裁出，作为可操作候选件。同一摆法去掉铜翼尖，星形覆盖只剩约 90%，判定无法通过。</dd>
-        </div>
-        <div>
-          <dt>两块投影桥板 <span>任务 8297010</span></dt>
-          <dd>从集市模型的柜台表面提取轮廓与起伏，制成可拖动的桥板。其投影用于检查连通与裂冰，通关后用成立的投影生成实体桥。</dd>
-        </div>
-        <div>
-          <dt>岸灯遮光门 <span>任务 8294293</span></dt>
-          <dd>采样书店门板浮雕，重建封闭的滑门网格。海灯摆对后，若滑门仍未挡住岸灯，幕布依然泛白，机关会拒绝通过。</dd>
-        </div>
-        <div>
-          <dt>旧光影工坊与木质门牌 <span>任务 8412111 · 8412117</span></dt>
-          <dd>新版门面替换游戏中的工坊外观。Lux3D 生成木坯，Blender 加工结构和材质，再统一加刻雪镇店名。这批两项任务共消耗 40 积分。</dd>
-        </div>
-      </dl>
+    <section class="section" id="chapters" aria-labelledby="chapters-title">
+      <h2 id="chapters-title">三次解谜，三次改变小镇</h2>
+      <p class="section-intro">三关都用到了 Aholo 模型。换一件道具或挪一挪灯，玩家立刻就能看见影子怎么变。</p>
+      <div class="chapters">
+        <article>
+          <figure><img src="/report/media/star.jpg" alt="两件工坊道具的投影在幕布上拼成一颗星" width="1440" height="900" loading="lazy"></figure>
+          <p class="kicker">第一章</p>
+          <h3>失落的星星</h3>
+          <p>两件道具的影子补出一颗星。去掉风轮上的铜翼尖，星就少了一角。拼成的星飞回钟楼，钟声、街灯和木马依次苏醒。</p>
+          <a class="asset-evidence" href="/assets.html?source=aholo&amp;asset=aholo-optical-fan-tip">看铜翼尖 · Aholo 8294283</a>
+        </article>
+        <article>
+          <figure><img src="/report/media/bridge.jpg" alt="影子变成连接两岸的桥" width="1280" height="720" loading="lazy"></figure>
+          <p class="kicker">第二章</p>
+          <h3>消失的桥</h3>
+          <p>在灯下挪动两块桥板，让影子连到对岸，又避开薄冰。拼好的影子变成脚下的桥，带你过河去找灯塔。</p>
+          <a class="asset-evidence" href="/assets.html?source=aholo&amp;asset=aholo-span-plank">看两块桥板 · Aholo 8297010</a>
+        </article>
+        <article>
+          <figure><img src="/report/media/lighthouse.jpg" alt="灯塔内的双面幕、海灯与岸灯遮光门" width="1280" height="720" loading="lazy"></figure>
+          <p class="kicker">第三章</p>
+          <h3>午夜最后一束光</h3>
+          <p>同一块幕布，从另一侧能看到不同线索。海灯已经照对位置，岸灯却还在冲淡影子。拉动遮光门，才能让归航灯重新亮起来。</p>
+          <a class="asset-evidence" href="/assets.html?source=aholo&amp;asset=aholo-dawn-shutter">看遮光门 · Aholo 8294293</a>
+        </article>
+      </div>
+      <details class="making">
+        <summary>这三件模型怎么做成机关</summary>
+        <p>我们把 Aholo 生成的钟楼屋脊改成风轮铜翼尖，把集市柜台改成桥板，把书店门板改成遮光门。调整和拆件在 Blender 完成，再把模型放回游戏，测试它们在灯下实际投出的形状。</p>
+        <p>灯具任务 8297001 也提供了工坊投影灯和可拿取的铸铜灯胆。</p>
+      </details>
     </section>
 
     <section class="section identity" aria-labelledby="identity-title">
       <div>
-        <h2 id="identity-title">雪镇的视觉与制作</h2>
-        <p>手绘绘本式的深靛冬夜、琥珀窗光和旧木贯穿雪镇。Paper &amp; Light 界面用暖纸承载手记，用暖金标出可操作的物件，让幕布和真实投影始终清楚。</p>
-        <p>实机回归覆盖首章新存档、错误投影拦截、影桥通行、灯塔双面投影、刷新后世界恢复和 1920 × 1200 PNG 贺卡导出。</p>
+        <h2 id="identity-title">品牌视觉与游戏界面</h2>
+        <p>从金月标志到纸条、地图和图标，沿用影生万物的绘本视觉。玩家靠纸条找到线索，靠暖金的提示认出可以触摸的物件。</p>
         <div class="actions">
-          <a href="/assets.html">查看品牌与资产库 <span aria-hidden="true">↗</span></a>
-          <a href="/identity/controls/index.html">查看控件与图标规范 <span aria-hidden="true">↗</span></a>
+          <a href="/identity/controls/index.html">打开品牌控件与图标库</a>
         </div>
       </div>
       <figure>
-        <img src="/asset-library/carpenter-facade-live.jpg" alt="新版旧光影工坊外观，窗上有暖光，门口悬挂统一木制招牌" width="1440" height="900" loading="lazy">
-        <figcaption>旧光影工坊 · 浏览器实拍</figcaption>
+        <img src="/report/media/brand-map.jpg" alt="游戏中的手绘雪镇地图，标示钟楼、工坊、桥和灯塔" width="1280" height="900" loading="lazy">
+        <figcaption>雪镇手绘地图 · 游戏实拍</figcaption>
       </figure>
     </section>
   </main>
   <footer>
     <span>影生万物 SHADOWMADE</span>
-    <span>Aholo Lux3D · Blender · Three.js · TypeScript</span>
+    <a href="https://github.com/JessyJang1/shadowmade">GitHub 源码</a>
   </footer>
 </body>
 </html>

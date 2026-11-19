@@ -23,8 +23,8 @@ body { margin: 0; background: radial-gradient(ellipse at 85% 7%, #242c48, transp
 a { color: var(--gold); text-underline-offset: .25em; }
 a:focus-visible { outline: 2px solid var(--gold); outline-offset: .35rem; }
 img { display: block; max-width: 100%; height: auto; }
-figure, p, h1, h2, h3, dl, dd { margin: 0; }
-p, dd { line-height: 1.75; }
+figure, p, h1, h2, h3 { margin: 0; }
+p { line-height: 1.75; }
 figcaption { padding-top: .55rem; color: var(--muted); font-size: .78rem; }
 
 .topbar, main, footer {
@@ -43,12 +43,14 @@ figcaption { padding-top: .55rem; color: var(--muted); font-size: .78rem; }
 }
 
 .brand { display: flex; align-items: center; gap: .5rem; color: var(--paper); text-decoration: none; letter-spacing: .12em; }
-.top-link { white-space: nowrap; }
-.opening { display: grid; grid-template-columns: 2fr 3fr; align-items: center; gap: clamp(1.4rem, 4vw, 4rem); padding-block: clamp(2.5rem, 6vw, 5.25rem); }
+.topbar nav { display: flex; gap: 1rem; white-space: nowrap; }
+.opening { display: grid; grid-template-columns: 2fr 3fr; align-items: center; gap: clamp(1.4rem, 4vw, 4rem); padding-block: clamp(2rem, 4.5vw, 4rem); }
 .kicker { color: var(--gold); font-size: .85rem; font-weight: 650; letter-spacing: .075em; }
 h1 { margin: .75rem 0 1.25rem; }
 h1 img { width: 28rem; }
-.premise { max-width: 38ch; font-size: 1.05rem; }
+.intro-label { margin-bottom: .5rem; font-size: 1.05rem; }
+.premise { max-width: 42ch; font-size: 1.02rem; }
+.premise + .premise { margin-top: .65rem; }
 .hint { margin-top: 1rem; color: var(--muted); font-size: .84rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1.25rem; margin-top: 1.25rem; }
 .actions a { display: inline-flex; align-items: center; gap: .4rem; padding-block: .35rem; }
@@ -63,12 +65,18 @@ h3 { margin-bottom: .5rem; font-size: 1.22rem; }
 .chapters figure { margin-bottom: .95rem; }
 .chapters img { aspect-ratio: 16 / 9; object-fit: cover; }
 .chapters .kicker { margin-bottom: .3rem; }
-.chapters p:last-child, .section-intro, .identity p { color: var(--muted); }
+.chapters p:not(.kicker), .section-intro, .identity p { color: var(--muted); }
 .section-intro { margin: .8rem 0 1.2rem; max-width: 66ch; }
-.provenance > div { display: grid; grid-template-columns: 1fr 2fr; gap: 1.2rem; padding-block: .95rem; border-top: 1px solid var(--line); }
-.provenance dt { align-self: center; font-weight: 700; line-height: 1.5; }
-.provenance dt span { display: block; margin-top: .2rem; color: var(--gold); font-size: .84rem; font-weight: 500; }
-.provenance dd { color: var(--muted); }
+.asset-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.asset-preview { display: grid; align-content: start; gap: .2rem; color: var(--paper); text-decoration: none; }
+.asset-preview img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--line); margin-bottom: .4rem; }
+.asset-preview:hover img { border-color: var(--gold); }
+.asset-preview:hover strong { color: var(--gold); }
+.asset-preview span { color: var(--muted); font-size: .83rem; }
+.asset-evidence { display: inline-block; margin-top: .7rem; font-size: .87rem; }
+.making { margin-top: 1.8rem; padding-top: .95rem; border-top: 1px solid var(--line); }
+.making summary { width: fit-content; color: var(--gold); cursor: pointer; }
+.making p { margin-top: .55rem; max-width: 74ch; color: var(--muted); }
 .identity { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; }
 .identity p { margin-top: .8rem; }
 footer { border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 1.2rem; padding-block: 1.2rem 2rem; color: var(--muted); font-size: .78rem; }
@@ -76,11 +84,13 @@ footer { border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; just
 @media (max-width: 51rem) {
   .opening, .identity { grid-template-columns: 1fr; }
   .opening { gap: 1.75rem; }
+  .asset-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem .8rem; }
   .chapters { grid-template-columns: 1fr; gap: 1.8rem; }
   .chapters article { max-width: 38rem; }
 }
 
 @media (max-width: 30rem) {
   .topbar, main, footer { width: calc(100% - 2rem); }
-  .provenance > div { grid-template-columns: 1fr; gap: .4rem; }
+  .topbar { font-size: .77rem; }
+  .topbar nav { gap: .7rem; }
 }

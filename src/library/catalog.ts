@@ -2,11 +2,11 @@ import spend from '../../evidence/aholo-batch-100/spend.json' with {type:'json'}
 
 export type Asset={
   id:string;name:string;kind:string;location:string;file?:string;task?:number;image?:string;
-  scene?:string;description?:string;status?:string;batch:'new'|'existing'|'scene';
+  scene?:string;description?:string;status?:string;relatedTasks?:readonly number[];batch:'new'|'existing'|'scene';
 };
 
 const featured=[
-  ['courier','冬夜信使','人物','全程 · 玩家主角','courier','带蒙皮关节的运行模型，复用游戏中的待机、移动和伸手。'],
+  ['courier','冬夜信使 · 早期角色','人物','历史版本','courier','早期的人物模型。当前游戏中的旅人采用黑影与星披少年的双形态。'],
   ['workshop','旧光影工坊 · 原门面','建筑','广场西侧 · 历史版本','workshop','任务 8412111 的新版已替换旧门面。'],
   ['clock','圣诞钟楼','建筑','广场北侧 · 第一章地标','clock','原 Aholo 资产提供钟房与屋顶。石砌塔身、拱门、钟针和星槽在游戏场景内独立组装。'],
   ['canopy','酒红木马顶棚','环境','中央广场 · 旋转木马','carousel','只替换随木马旋转的顶棚。马匹和基座沿用现有资产。'],
@@ -55,8 +55,9 @@ export const catalog:Asset[]=[
   ...featured.map(([id,name,kind,location,scene,description]):Asset=>{
     const item=spend.batches.flatMap(batch=>batch.items).find(asset=>asset.asset===id);
     if(!item?.game)throw new Error('Missing game asset: '+id);
+    const archived=id==='workshop'||id==='courier';
     return {id,name,kind,location,description,task:item.taskId,file:item.game.split('/').pop(),
-      image:id+'.webp',scene:'scene-'+scene+'.webp',batch:id==='workshop'?'existing':'new',status:id==='workshop'?'历史':'在用'};
+      image:id+'.webp',scene:'scene-'+scene+'.webp',batch:archived?'existing':'new',status:archived?'历史':'在用'};
   }),
   {id:'nightwatch-horse',name:'守灯人的夜巡马',kind:'环境',location:'中央广场 · 六个木马座',file:'nightwatch-horse.glb',task:8355224,
     scene:'nightwatch-live.webp',batch:'new',status:'在用',description:'由原创木马母稿生成。六个马座共享网格与贴图，各自沿立柱起伏。'},
@@ -100,28 +101,30 @@ export const catalog:Asset[]=[
     ['fir','钟房木模',8294283,'从原生成钟楼裁取钟房与屋脊。可投影、移动和旋转。'],
     ['fan-tip','折翼风轮 · 铸铜翼尖',8294283,'取生成钟房屋顶的立体起伏重制原风轮翼尖。翼尖投出正确星形的上尖。'],
   ] as const).map(([id,name,task,description]):Asset=>({id:'aholo-optical-'+id,name,task,description,
-    kind:'道具',location:'第一章 · 光影工坊',file:'aholo-optical-'+id+'.glb',batch:'new',status:'在用'})),
+    kind:'道具',location:'第一章 · 光影工坊',file:'aholo-optical-'+id+'.glb',
+    scene:id==='fan-tip'?'../report/media/star.jpg':undefined,batch:'new',status:'在用'})),
   {id:'aholo-workshop-carpenter',name:'旧光影工坊 · 新门面',kind:'建筑',location:'广场西侧 · 第一章入口',
     task:8412111,file:'aholo-workshop-carpenter.glb',scene:'carpenter-facade-live.jpg',batch:'new',status:'在用',
     description:'Aholo 全新工坊。6000D Blender 整理为石基、木构灰泥和瓦顶山墙三组，保留雪顶、门廊与木格窗。'},
   {id:'aholo-wooden-signs',name:'雪镇 · 胡桃木店招',kind:'道具',location:'小镇门面及路标',
     task:8412117,file:'aholo-wooden-signs.glb',scene:'carpenter-bookshop-live.jpg',batch:'new',status:'在用',
     description:'从 Aholo 模型拆取木牌坯，Blender 精修，并用开源中文字体轮廓制作十三组立体镶字。'},
-  {id:'aholo-casting-pieces-refined',name:'首章 · 三件投影道具精修',kind:'道具',location:'第一章 · 光影工坊',
+  {id:'aholo-casting-pieces-refined',name:'首章 · 三件投影道具',kind:'道具',location:'第一章 · 光影工坊',
+    relatedTasks:[8297001,8294283],
     file:'aholo-casting-pieces-refined.glb',batch:'new',status:'在用',
     description:'Aholo 源任务 8297001、8294283。6000D 上的 Blender 将灯胆和钟房拆成两组材质各异的网格，并为折翼风轮铜翼补做独立材质。材质含底色、粗糙度与法线。原校准投影体沿用。'},
   {id:'aholo-projector-refined',name:'工坊精修投影灯',kind:'道具',location:'第一章 · 工坊 / 第三章 · 海灯',
     task:8297001,file:'aholo-projector-refined.glb',batch:'new',status:'在用',
     description:'Aholo 生成灯具在 6000D Blender 拆分灯壳、镜圈、通风帽和底座，保留 UV 并导出四套 PBR。'},
   {id:'aholo-span-plank',name:'影桥 · 双桥板',kind:'道具',location:'第二章 · 断桥工位',
-    task:8297010,file:'aholo-span-plank.glb',batch:'new',status:'在用',
-    description:'由 Aholo 集市柜台轮廓衍生的凸体。两块桥板使用同源几何，各自的投影与石台、岸和裂冰做几何判定。'},
+    task:8297010,file:'aholo-span-plank.glb',scene:'../report/media/bridge.jpg',batch:'new',status:'在用',
+    description:'从 Aholo 生成的集市柜台改出来的两块桥板。玩家在灯下移动它们，把两岸的落脚处连起来，同时绕开薄冰。'},
   {id:'aholo-shutter-refined',name:'归航灯 · 海图遮光门',kind:'道具',location:'第三章 · 岸灯滑轨',
     task:8294293,file:'aholo-shutter-refined.glb',batch:'new',status:'在用',
     description:'Blender 以 Aholo 书店浮雕为门芯，分制铁框、黄铜拉手、铆钉及航向标。交互和背光计算使用同源的校准遮光体。'},
   {id:'aholo-dawn-shutter',name:'归航灯 · 岸灯遮光门',kind:'道具',location:'第三章 · 北岸灯塔',
-    task:8294293,file:'aholo-dawn-shutter.glb',batch:'new',status:'在用',
-    description:'由 Aholo 书店木门的浮雕重制。门板三角面直接挡住岸灯，并进入双面光学判定。'},
+    task:8294293,file:'aholo-dawn-shutter.glb',scene:'../report/media/lighthouse.jpg',batch:'new',status:'在用',
+    description:'从 Aholo 生成的书店木门改制。滑门能挡住岸灯，玩家要从幕布另一侧观察影子如何变化。'},
   {id:'shadow-carvings',name:'首章六件投影道具',kind:'道具',location:'旧工坊 · 木工桌',batch:'scene',status:'在用',
     scene:'scene-projector.webp',description:'钟房木模、石拱、铸铜灯胆、折翼风轮、蟠枝钩、环钥。两件直接复用 Aholo 网格，风轮上缘另有同源立体铜翼。'},
   {id:'town-kit',name:'广场建筑与街道构件',kind:'环境',location:'广场 · 钟楼街',batch:'scene',status:'在用',
